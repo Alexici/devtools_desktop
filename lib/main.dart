@@ -74,6 +74,7 @@ final _router = GoRouter(
               builder: (context, state) =>
                   const Scaffold(body: Center(child: Text('Coming Soon!'))),
               routes: [
+                // Sub-routes for Generators
                 GoRoute(
                   path: 'uuid_generator',
                   builder: (context, state) => const UuidToolView(),
