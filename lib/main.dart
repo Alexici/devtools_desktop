@@ -1,14 +1,18 @@
-import 'package:devtools_desktop/features/converters/converters_view.dart';
-import 'package:devtools_desktop/features/generators/generators_view.dart';
-import 'package:devtools_desktop/features/generators/uuid_tool/uuid_tool_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:provider/provider.dart';
-
 import 'core/app_shell.dart';
 import 'core/theme_provider.dart';
 import 'features/home/home_screen.dart';
+
+// Importing main views
+import 'package:devtools_desktop/features/converters/converters_view.dart';
+import 'package:devtools_desktop/features/generators/generators_view.dart';
+
+// Importing sub-views
+import 'package:devtools_desktop/features/generators/uuid_tool/uuid_tool_view.dart';
+import 'package:devtools_desktop/features/converters/json_tool/json_tool_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,6 +67,13 @@ final _router = GoRouter(
             GoRoute(
               path: '/converters',
               builder: (context, state) => const ConvertersView(),
+              routes: [
+                // Sub-routes for Converters
+                GoRoute(
+                  path: 'json_formatter',
+                  builder: (context, state) => const JsonToolView(),
+                ),
+              ],
             ),
           ],
         ),
