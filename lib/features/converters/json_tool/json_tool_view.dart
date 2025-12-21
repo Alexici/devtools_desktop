@@ -74,6 +74,18 @@ class _JsonToolViewState extends State<JsonToolView> {
     }
   }
 
+  // Logic: Paste input from clipboard
+  Future<void> _pasteInput() async {
+    final ClipboardData? data = await Clipboard.getData(Clipboard.kTextPlain);
+    final String? text = data?.text;
+    if (text == null || text.isEmpty) return;
+    if (!mounted) return;
+    setState(() {
+      _inputController.text = text;
+      _prettifyJson();
+    });
+  }
+
   void _clearAll() {
     _inputController.clear();
     _outputController.clear();
@@ -144,14 +156,24 @@ class _JsonToolViewState extends State<JsonToolView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 16.0,
                           vertical: 8.0,
                         ),
-                        child: Text(
-                          "Input",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Input",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.paste, size: 18),
+                              tooltip: 'Paste from Clipboard',
+                              onPressed: _pasteInput,
+                            ),
+                          ],
                         ),
                       ),
                       Expanded(
