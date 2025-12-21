@@ -1,4 +1,5 @@
 import 'package:devtools_desktop/features/converters/converters_view.dart';
+import 'package:devtools_desktop/features/generators/generators_view.dart';
 import 'package:devtools_desktop/features/generators/uuid_tool/uuid_tool_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -71,8 +72,7 @@ final _router = GoRouter(
           routes: [
             GoRoute(
               path: '/generators',
-              builder: (context, state) =>
-                  const Scaffold(body: Center(child: Text('Coming Soon!'))),
+              builder: (context, state) => const GeneratorsView(),
               routes: [
                 // Sub-routes for Generators
                 GoRoute(
