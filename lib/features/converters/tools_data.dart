@@ -21,7 +21,7 @@ final List<ToolItem> converterTools = [
     title: 'JSON Formatter',
     description: 'Validate, prettify, and minify JSON data.',
     icon: Icons.data_object,
-    route: '/converters/json_formatter',
+    route: '/generators/uuid_generator', // TEST
   ),
 
   // Base64 Encoder/Decoder Tool

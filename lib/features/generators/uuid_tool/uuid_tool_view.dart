@@ -19,9 +19,13 @@ class _UuidToolViewState extends State<UuidToolView> {
   bool _upperCase = false;
   int _count = 1;
 
+  // Controller
+  late TextEditingController _countController;
+
   @override
   void initState() {
     super.initState();
+    _countController = TextEditingController(text: _count.toString());
     _generate(); // Initial generation
   }
 
@@ -61,7 +65,11 @@ class _UuidToolViewState extends State<UuidToolView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('UUID Generator')),
+      appBar: AppBar(
+        title: const Text('UUID Generator'),
+        scrolledUnderElevation: 0.0,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+      ),
 
       body: Padding(
         padding: const EdgeInsets.all(24),
@@ -74,28 +82,34 @@ class _UuidToolViewState extends State<UuidToolView> {
               runSpacing: 10,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text("Count: "),
-                    SizedBox(
-                      width: 150,
-                      child: Slider(
-                        value: _count.toDouble(),
-                        min: 1,
-                        max: 50,
-                        divisions: 49,
-                        label: _count.toString(),
-                        onChanged: (value) {
-                          setState(() {
-                            _count = value.toInt();
-                            _generate();
-                          });
-                        },
+                // Count Selector
+                SizedBox(
+                  width: 70,
+                  child: TextField(
+                    controller: _countController,
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      labelText: "Count",
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 10,
                       ),
+                      counterText: "",
                     ),
-                    Text("$_count"),
-                  ],
+                    maxLength: 2, // Limit to 2 digits (99 max)
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    onChanged: (value) {
+                      int? newVal = int.tryParse(value);
+                      if (newVal != null && newVal > 0) {
+                        setState(() {
+                          _count = newVal;
+                          _generate();
+                        });
+                      }
+                    },
+                  ),
                 ),
 
                 // Toggles

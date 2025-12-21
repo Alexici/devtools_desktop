@@ -1,4 +1,5 @@
 import 'package:devtools_desktop/features/converters/tools_data.dart';
+import 'package:go_router/go_router.dart';
 import 'package:devtools_desktop/widgets/tool_card.dart';
 import 'package:flutter/material.dart';
 
@@ -25,9 +26,7 @@ class ConvertersView extends StatelessWidget {
             description: tool.description,
             icon: tool.icon,
             onTap: () {
-              print(
-                'Navigating to ${tool.route}',
-              ); // Replace with actual navigation logic
+              context.push(tool.route);
             },
           );
         }).toList(),
