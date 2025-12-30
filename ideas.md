@@ -1,6 +1,6 @@
 1. Converters:
 
-   - JSON Formatter & Validator: Paste ugly JSON -> Get pretty, colored JSON.
+   - JSON Formatter & Validator: Paste ugly JSON -> Get pretty, colored JSON. -- DONE
    - Base64 Encoder/Decoder: Essential for handling API tokens or images.
    - JWT Decoder: Paste a JWT token to see the payload (expiry, user ID) without sending it to a server.
    - Number Base Converter: Convert between Decimal, Hexadecimal, Binary, and Octal instantly.
@@ -8,7 +8,7 @@
 
 2. Generators:
 
-   - UUID/GUID Generator: Generate random IDs (v4) for databases.
+   - UUID/GUID Generator: Generate random IDs (v4) for databases. -- DONE
    - Hash Generator: Input text -> Output MD5, SHA-256, SHA-512 hashes.
    - Lorem Ipsum Generator: Generate dummy text (paragraphs, sentences, words).
    - Password Generator: Create secure passwords with toggles (symbols, numbers, length).

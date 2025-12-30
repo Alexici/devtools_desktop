@@ -69,9 +69,17 @@ final _router = GoRouter(
               builder: (context, state) => const ConvertersView(),
               routes: [
                 // Sub-routes for Converters
+
+                // JSON Formatter Tool
                 GoRoute(
                   path: 'json_formatter',
                   builder: (context, state) => const JsonToolView(),
+                ),
+
+                // Base64 Encoder/Decoder Tool
+                GoRoute(
+                  path: 'base64',
+                  // builder: (context, state) => const Base64ToolView(),
                 ),
               ],
             ),
