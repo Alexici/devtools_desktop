@@ -13,6 +13,7 @@ import 'package:devtools_desktop/features/generators/generators_view.dart';
 // Importing sub-views
 import 'package:devtools_desktop/features/generators/uuid_tool/uuid_tool_view.dart';
 import 'package:devtools_desktop/features/converters/json_tool/json_tool_view.dart';
+import 'package:devtools_desktop/features/converters/base64/base64_tool_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -76,10 +77,10 @@ final _router = GoRouter(
                   builder: (context, state) => const JsonToolView(),
                 ),
 
-                // Base64 Encoder/Decoder Tool
+                //Base64 Encoder/Decoder Tool
                 GoRoute(
                   path: 'base64',
-                  // builder: (context, state) => const Base64ToolView(),
+                  builder: (context, state) => const Base64ToolView(),
                 ),
               ],
             ),
